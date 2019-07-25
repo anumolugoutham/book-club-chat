@@ -1,14 +1,14 @@
 
 const smail=require("@sendgrid/mail")
 
-smail.setApiKey("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")
+smail.setApiKey("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")
 
-const welcomemail=function(email,name){
+const welcomemail=function(email,name,x){
 smail.send({
   to:email,
-  from:"anumolu.goutham@gmail.com",
+  from:x,
   subject:"Book Club",
-  text: name
+  text: "Interseted in one of your books . You can contact me with this email . My Location "+name
 
 
 

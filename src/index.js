@@ -63,9 +63,10 @@ io.on('connection', (socket) => {
         const x=user.username
         const z=getUsersInRoom(user.room)
         for (var i = 0; i < z.length; i++) {
+
           if(z[i].username!=x){
 
-              welcomemail(z[i].username,`https://google.com/maps?q=${coords.latitude},${coords.longitude}`)
+              welcomemail(z[i].username,`https://google.com/maps?q=${coords.latitude},${coords.longitude}`,x)
           }
         }
 
