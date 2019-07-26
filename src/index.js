@@ -26,6 +26,7 @@ io.on('connection', (socket) => {
     console.log('New WebSocket connection')
 
     socket.on('join', (options, callback) => {
+
         const { error, user } = addUser({ id: socket.id, ...options })
 
         if (error) {
@@ -33,6 +34,7 @@ io.on('connection', (socket) => {
         }
 
         socket.join(user.room)
+
 
         socket.emit('message', generateMessage('Team Book Club', 'Welcome!'))
         socket.broadcast.to(user.room).emit('message', generateMessage('Team Book Club', `${user.username} has joined!`))
@@ -61,16 +63,19 @@ io.on('connection', (socket) => {
     socket.on('sendLocation', (coords, callback) => {
         const user = getUser(socket.id)
         const x=user.username
+
         const z=getUsersInRoom(user.room)
-        for (var i = 0; i < z.length; i++) {
+        // for (var i = 0; i < z.length; i++) {
+        //
+        //   if(z[i].username==user.owner){
+        //
+        //   }
 
-          if(z[i].username!=x){
+        welcomemail(user.owner,`https://google.com/maps?q=${coords.latitude},${coords.longitude}`,user.username)
+          //   }
+          // }
 
-              welcomemail(z[i].username,`https://google.com/maps?q=${coords.latitude},${coords.longitude}`,x)
-          }
-        }
-
-
+        // io.to(user.room).emit('locationMessage', generateLocationMessage(user.owner, `https://google.com/maps?q=${coords.latitude},${coords.longitude}`))
         io.to(user.room).emit('locationMessage', generateLocationMessage(user.username, `https://google.com/maps?q=${coords.latitude},${coords.longitude}`))
         callback()
     })
