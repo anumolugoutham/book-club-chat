@@ -8,7 +8,7 @@ smail.send({
   to:email,
   from:x,
   subject:"Book Club",
-  text: "Interseted in one of your books . You can contact me with this email . My Location "+name
+  text: "Interseted in one of your books . You can contact me through this email . My Location "+name
 
 
 
