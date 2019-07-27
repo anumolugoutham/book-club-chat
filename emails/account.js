@@ -3,7 +3,7 @@ const smail=require("@sendgrid/mail")
 // const r=require("../public/index.html")
 
 // console.log(username)
-smail.setApiKey("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")
+smail.setApiKey("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")
 
 const welcomemail=function(email,name,x){
 smail.send({
